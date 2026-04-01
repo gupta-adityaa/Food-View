@@ -7,6 +7,7 @@ const { v4: uuid } = require("uuid")
 
 async function createFood(req, res) {
     const fileUploadResult = await storageService.uploadFile(req.file.buffer, uuid())
+    // Takes the raw buffer file, generate unique filename using uuid() sned it to storage service and returns a result containg url
 
     const foodItem = await foodModel.create({
         name: req.body.name,
