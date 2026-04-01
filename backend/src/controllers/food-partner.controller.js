@@ -16,6 +16,8 @@ async function getFoodPartnerById(req, res) {
         message: "Food partner retrieved successfully",
         foodPartner: {
             ...foodPartner.toObject(),
+            //Converting a Mongoose document into a normal JavaScript object
+            // Spreading (copying) all its fields into a new object
             foodItems: foodItemsByFoodPartner
         }
 
