@@ -3,17 +3,19 @@ const foodController = require("../controllers/food.controller")
 const authMiddleware = require("../middlewares/auth.middleware")
 const router = express.Router();
 const multer = require('multer');
-
+// Multer is a middleware that parses incoming request containing files and makes them accessible inside backend using req.file
 
 const upload = multer({
     storage: multer.memoryStorage(),
+    // Defines where multer should store the file, instead of storing on disk file is temporarily stored in RAM and available as a buffer
 })
 
 
 /* POST /api/food/ [protected]*/
 router.post('/',
     authMiddleware.authFoodPartnerMiddleware,
-    upload.single("mama"),
+    upload.single("Item-1"),
+    // It tells Multer expect one file from the request and its field name will be Item-1
     foodController.createFood)
 
 
