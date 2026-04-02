@@ -25,6 +25,11 @@ async function createFood(req, res) {
 
 async function getFoodItems(req, res) {
     const foodItems = await foodModel.find({})
+    //fetching all documents from the food collection in MongoDB.
+    // .find({}), you are passing an empty filter object {}. An empty filter means:
+    // “Do not apply any condition — return everything.” So MongoDB scans the food collection and returns all food documents stored in it.
+    // The result you get is always an array:
+
     res.status(200).json({
         message: "Food items fetched successfully",
         foodItems
